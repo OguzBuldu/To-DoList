@@ -1,0 +1,42 @@
+import tkinter as tk 
+from tkinter import messagebox
+
+#Pencere Özellikleri
+root = tk.Tk()
+root.title("To-Do Liste")
+root.geometry("300x300")
+
+#Kullanıcıdan Bilgi Almak 
+entry = tk.Entry(root)
+entry.pack()
+
+#Liste Tanımlamak
+list = tk.Listbox()
+list.pack()
+
+
+#Buttona Tıklandığında Listeye Eklemek İçin
+def ekle():
+    list.insert(tk.END, entry.get())
+    
+
+button1 = tk.Button(root,text="Görev Ekle", command=ekle)
+button1.pack()
+
+#Sil Buttonuna Tıklandığında Listeyi Silmek İçin
+def sil():
+    list.delete(tk.ACTIVE)
+
+button2 = tk.Button(root,text="Görev Sil",command=sil)
+button2.pack()
+
+#Tamamla  Buttonuna Tıklandığında Messagebox çalıştırmak İçin
+def tamamla():
+    list.delete(tk.ACTIVE)
+    messagebox.showinfo("Tebrikler",message="Tebrikler Görevi Tamamladınız.")
+
+button3 = tk.Button(root,text="Görevi Tamamla",command=tamamla)
+button3.pack()
+
+#Pencereyi Açık Tutmak İçin
+root.mainloop()
